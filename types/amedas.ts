@@ -15,6 +15,7 @@ export interface AmedasObservation {
     wind?: [number, number];
     windDirection?: [number, number];
     precipitation1h?: [number, number];
+    snow?: [number, number];
 }
 
 export interface AmedasRow {
@@ -25,4 +26,5 @@ export interface AmedasRow {
     wind: number | null;
     windDirection: number | null;
     precipitation1h: number | null;
+    snow: number | null;
 }

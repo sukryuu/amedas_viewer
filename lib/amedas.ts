@@ -66,6 +66,7 @@ export const mergeAmedasData = (
             wind: obs?.wind?.[0] ?? null,
             windDirection: obs?.windDirection?.[0] ?? null,
             precipitation1h: obs?.precipitation1h?.[0] ?? null,
+            snow: obs?.snow?.[0] ?? null,
         };
     });
 };
