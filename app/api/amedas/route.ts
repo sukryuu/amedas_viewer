@@ -6,13 +6,20 @@ import {
     mergeAmedasData
 } from "@/lib/amedas";
 
-export async function GET() {
+const TEST_TIME = process.env.AMEDAS_TEST_TIME;
+
+export async function GET(request: Request) {
     try {
-        const time = await fetchLatestTimeString();
+        const { searchParams } = new URL(request.url);
+
+        const time =
+            searchParams.get("time")
+            ?? TEST_TIME
+            ?? await fetchLatestTimeString();
 
         const [
             stations,
-            obervations
+            observations
         ] = await Promise.all([
             fetchAmedasStations(),
             fetchAmedasData(time)
@@ -20,7 +27,7 @@ export async function GET() {
 
         const rows = mergeAmedasData(
             stations,
-            obervations
+            observations
         );
 
         return NextResponse.json({
