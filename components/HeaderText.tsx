@@ -1,9 +1,10 @@
 import { Box } from "@mui/material";
+import type { ReactNode } from "react";
 
 export default function HeaderText({
     children,
 }: {
-    children: string;
+    children: ReactNode;
 }) {
     return (
         <Box

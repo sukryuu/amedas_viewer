@@ -40,7 +40,14 @@ export const fetchAmedasData = async (
     return await response.json();
 };
 
+let stationsCache: Record<string, AmedasStation> | null = null;
+
 export const fetchAmedasStations = async (): Promise<Record<string, AmedasStation>> => {
+
+    if (stationsCache !== null) {
+        return stationsCache;
+    }
+
     const response = await fetch(
         "https://www.jma.go.jp/bosai/amedas/const/amedastable.json"
     );
@@ -49,7 +56,11 @@ export const fetchAmedasStations = async (): Promise<Record<string, AmedasStatio
         throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return await response.json();
+    const data: Record<string, AmedasStation> = await response.json();
+
+    stationsCache = data;
+
+    return data;
 };
 
 export const mergeAmedasData = (
@@ -127,7 +138,7 @@ export async function fetchAmedasPoint(
 
         const url =
             `https://www.jma.go.jp/bosai/amedas/data/point/${id}/${fileTime}.json`;
-
+console.log(url);
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -170,16 +181,13 @@ export async function findLatestAmedasTime(): Promise<string> {
         const time =
             `${candidate.getFullYear()}${String(candidate.getMonth() + 1).padStart(2, "0")}${String(candidate.getDate()).padStart(2, "0")}${String(candidate.getHours()).padStart(2, "0")}${String(candidate.getMinutes()).padStart(2, "0")}00`;
 
-        const fileTime =
-            `${time.slice(0, 8)}_${time.slice(8, 10)}`;
-
         try {
             const res = await fetch(
-                `https://www.jma.go.jp/bosai/amedas/data/map/${fileTime}.json`,
-                {
-                    method: "HEAD",
-                }
-            );
+    `https://www.jma.go.jp/bosai/amedas/data/map/${time}.json`,
+    {
+        method: "HEAD",
+    }
+);
 
             if (res.ok) {
                 return time;
