@@ -74,7 +74,15 @@ export default function AmedasDetailDrawer({
               outline: "none",
             }}
           >
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, flexShrink: 0, mb: 2 }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                flexShrink: 0,
+                mb: 2,
+              }}
+            >
               <Typography variant="h5" sx={{ fontWeight: "bold", flex: 1 }}>
                 {row?.name}
               </Typography>
@@ -83,7 +91,7 @@ export default function AmedasDetailDrawer({
               </IconButton>
             </Box>
             <Box sx={{ flex: 1, overflowY: "auto", minHeight: 0 }}>
-              <Typography color="text.secondary" sx={{ mb: 3 }}>
+              <Typography sx={{ color: "text.secondary", mb: 3 }}>
                 {row?.prefecture}
               </Typography>
               <WeatherCards point={point} />
@@ -170,7 +178,7 @@ export default function AmedasDetailDrawer({
               pb: 2,
             }}
           >
-            <Typography color="text.secondary" sx={{ mb: 3 }}>
+            <Typography sx={{ color: "text.secondary", mb: 3 }}>
               {row?.prefecture}
             </Typography>
             <WeatherCards point={point} />

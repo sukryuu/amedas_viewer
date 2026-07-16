@@ -108,7 +108,7 @@ const WindCard = ({ point }: { point: AmedasPoint | null }) => {
           height: "70%",
         }}
       >
-        <Box sx={{ display: "flex", gap: 1 }}>
+        <Box sx={{ display: "flex", gap: 1, justifyContent: "space-between", alignItems: "center" }}>
           <Typography color="text.secondary" sx={{ fontSize: "clamp(12px, 3vw, 14px)" }}>
             風向
           </Typography>
@@ -119,7 +119,7 @@ const WindCard = ({ point }: { point: AmedasPoint | null }) => {
 
         <Divider sx={{ my: 0.5, borderColor: "rgba(255,255,255,0.25)" }} />
 
-        <Box sx={{ display: "flex", gap: 1 }}>
+        <Box sx={{ display: "flex", gap: 1, justifyContent: "space-between", alignItems: "center" }}>
           <Typography color="text.secondary" sx={{ fontSize: "clamp(12px, 3vw, 14px)" }}>
             風速
           </Typography>

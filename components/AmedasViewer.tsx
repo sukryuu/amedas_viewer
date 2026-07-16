@@ -41,7 +41,9 @@ export default function AmedasViewer() {
 
   useEffect(() => {
     const loadData = () => {
-      const url = selectedTime ? `/api/amedas?time=${selectedTime}` : "/api/amedas";
+      const url = selectedTime
+        ? `/api/amedas?time=${selectedTime}`
+        : "/api/amedas";
 
       fetch(url)
         .then((res) => res.json())
@@ -55,7 +57,8 @@ export default function AmedasViewer() {
 
     loadData();
 
-    {/*}
+    {
+      /*}
     if (selectedTime || process.env.NEXT_PUBLIC_AMEDAS_TEST_TIME) {
       return;
     }
@@ -80,8 +83,9 @@ export default function AmedasViewer() {
       clearTimeout(timeout);
       clearInterval(interval);
     };
-      */}
-    }, [selectedTime]);
+      */
+    }
+  }, [selectedTime]);
 
   const toggleField = (field: string) => {
     setVisibleFields((prev) =>
@@ -161,8 +165,8 @@ export default function AmedasViewer() {
           mb: 2,
         }}
       >
-        <h1 className="text-xl font-bold">アメダスビューア</h1>
-        <Box sx={{ color: "#888", fontSize: 13 }}>
+        <h1 className="text-lg font-bold md:text-2xl">アメダスビューア</h1>
+        <Box sx={{ color: "#888", fontSize: { xs: 12, sm: 13, md: 14 } }}>
           最終更新: {formatUpdateTime(updatedAt)}
         </Box>
       </Box>
