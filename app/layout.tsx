@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "アメダス観測ランキング",
+  title: "AMeDAS Viewer",
   description: "",
 };
 
