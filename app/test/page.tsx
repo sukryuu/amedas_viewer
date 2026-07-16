@@ -28,20 +28,47 @@ export default function AmedasDetailDrawer({
   // isPortraitが確定するまで何もレンダリングしない
   if (isPortrait === null) return null;
 
+  if (!isPortrait) {
+    return (
+      <Drawer.Root
+        open={open}
+        onOpenChange={onOpenChange}
+        direction="right"
+        modal={false}
+      >
+        <Drawer.Portal>
+          <Drawer.Content
+            style={{
+              position: "fixed",
+              display: "flex",
+              flexDirection: "column",
+              top: 0,
+              right: 0,
+              width: 520,
+              height: "100vh",
+              borderRadius: "20px 0 0 20px",
+              background: "rgba(38,38,38,0.85)",
+              padding: 16,
+              zIndex: 1300,
+            }}
+          >
+            <p style={{ color: "white" }}>テスト (デスクトップ)</p>
+          </Drawer.Content>
+        </Drawer.Portal>
+      </Drawer.Root>
+    );
+  }
+
   return (
     <Drawer.Root
       open={open}
       onOpenChange={onOpenChange}
-      direction={isPortrait ? "bottom" : "right"}
+      direction="bottom"
       modal={true}
-      {...(isPortrait
-        ? {
-            snapPoints: ["120px", 0.9],
-            activeSnapPoint: sheetSnap,
-            setActiveSnapPoint: onSheetSnapChange,
-            fadeFromIndex: 0,
-          }
-        : {})}
+      snapPoints={["120px", 0.9]}
+      activeSnapPoint={sheetSnap}
+      setActiveSnapPoint={onSheetSnapChange}
+      fadeFromIndex={0}
     >
       <Drawer.Portal>
         <Drawer.Content
@@ -60,7 +87,7 @@ export default function AmedasDetailDrawer({
           }}
         >
           <Drawer.Handle />
-          <p style={{ color: "white" }}>テスト</p>
+          <p style={{ color: "white" }}>テスト (モバイル)</p>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>
