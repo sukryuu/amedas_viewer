@@ -174,7 +174,6 @@ export default function AmedasTable({
                 cursor: "pointer",
                 ...(isMobile && col.field === "name"
                   ? {
-                      position: "sticky",
                       left: 0,
                       zIndex: 4,
                       background: "#222",
