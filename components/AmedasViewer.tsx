@@ -24,7 +24,7 @@ export default function AmedasViewer() {
   const [pointData, setPointData] = useState<AmedasPoint | null>(null);
   const [history, setHistory] = useState<AmedasHistoryPoint[]>([]);
   const [detailOpen, setDetailOpen] = useState(false);
-  const [sheetSnap, setSheetSnap] = useState<string | number | null>(0.55);
+  const [sheetSnap, setSheetSnap] = useState<string | number | null>(0.9);
   const [sortField, setSortField] = useState<string | null>(null);
   const [sortAsc, setSortAsc] = useState(true);
   const [visibleFields, setVisibleFields] = useState([
@@ -55,6 +55,7 @@ export default function AmedasViewer() {
 
     loadData();
 
+    {/*}
     if (selectedTime || process.env.NEXT_PUBLIC_AMEDAS_TEST_TIME) {
       return;
     }
@@ -79,7 +80,8 @@ export default function AmedasViewer() {
       clearTimeout(timeout);
       clearInterval(interval);
     };
-  }, [selectedTime]);
+      */}
+    }, [selectedTime]);
 
   const toggleField = (field: string) => {
     setVisibleFields((prev) =>
@@ -119,7 +121,7 @@ export default function AmedasViewer() {
     setSelectedRow(row);
     setPointData(null);
     setHistory([]);
-    setSheetSnap(0.55);
+    setSheetSnap("160px");
     setDetailOpen(true);
 
     if (!updatedAt) return;

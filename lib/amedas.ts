@@ -209,6 +209,8 @@ export async function fetchAmedasHistory(
     const result: {
         time: string;
         temp: number | null;
+        humidity: number | null;
+        pressure: number | null;
     }[] = [];
 
     const end = new Date(
@@ -268,6 +270,8 @@ export async function fetchAmedasHistory(
                 result.push({
                     time: timestamp,
                     temp: obs.temp?.[0] ?? null,
+                    humidity: obs.humidity?.[0] ?? null,
+                    pressure: obs.pressure?.[0] ?? null,
                 });
             }
         }

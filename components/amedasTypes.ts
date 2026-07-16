@@ -19,4 +19,6 @@ export type AmedasPoint = Record<string, [number | null, number] | undefined>;
 export interface AmedasHistoryPoint {
   time: string;
   temp: number | null;
+  humidity: number | null;
+  pressure: number | null;
 }
